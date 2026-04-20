@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Team Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a; --navy2: #162032; --red: #d0312d; --red2: #b02525;
+    --gold: #e8b84b; --cream: #f5f0e8; --gray: #8a9ab0; --border: #2a3a50;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--cream); min-height: 100vh; }
+
+header { background: var(–navy2); border-bottom: 3px solid var(–red); padding: 14px 20px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.4); flex-wrap: wrap; }
+.logo-icon { width: 40px; height: 40px; background: var(–red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+header h1 { font-family: ‘Barlow Condensed’, sans-serif; font-size: 1.35rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+header h1 span { color: var(–gold); }
+.header-meta { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.save-status { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; color: var(–gray); }
+.save-status.saved { color: #6bcb77; }
+
+.btn { font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 14px; border-radius: 4px; border: none; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.btn-primary { background: var(–red); color: #fff; }
+.btn-primary:hover { background: var(–red2); }
+.btn-outline { background: transparent; border: 2px solid var(–border); color: var(–gray); }
+.btn-outline:hover { border-color: var(–gold); color: var(–gold); }
+.btn-gold { background: var(–gold); color: var(–navy); }
+.btn-gold:hover { background: #d4a63e; }
+
+main { max-width: 860px; margin: 28px auto; padding: 0 16px 80px; }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media(max-width:520px){ .meta-row { grid-template-columns:1fr; } }
+
+.section-card { background: var(–navy2); border: 1px solid var(–border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+.section-header { background: var(–border); padding: 9px 18px; display: flex; align-items: center; gap: 10px; }
+.section-icon { font-size: 1rem; width: 22px; text-align: center; }
+.section-title { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(–gold); }
+.section-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+@media(max-width:520px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
+
+label { display: block; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.76rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gray); margin-bottom: 5px; }
+input[type=“text”], input[type=“date”], input[type=“number”], textarea {
+width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(–border); border-radius: 5px;
+color: var(–cream); font-family: ‘Barlow’, sans-serif; font-size: 0.95rem; padding: 9px 12px;
+transition: border-color 0.15s; outline: none; -webkit-appearance: none;
+}
+input:focus, textarea:focus { border-color: var(–gold); background: rgba(232,184,75,0.05); }
+textarea { resize: vertical; min-height: 78px; }
+
+.numbered-inputs { display: flex; flex-direction: column; gap: 8px; }
+.numbered-row { display: flex; align-items: center; gap: 10px; }
+.num-badge { width: 26px; height: 26px; background: var(–red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+.work-badge { background: var(–border); color: var(–gray); }
+
+.gamer-list { display: flex; flex-direction: column; gap: 10px; }
+.gamer-row-wrap { display: flex; align-items: center; gap: 12px; }
+.gamer-row-wrap input { flex: 1; }
+.gamer-cat-label { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gold); width: 100px; flex-shrink: 0; }
+
+.pt-table { width: 100%; border-collapse: collapse; }
+.pt-table th { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gray); text-align: left; padding: 6px 10px; border-bottom: 1px solid var(–border); }
+.pt-table td { padding: 6px 8px; }
+.pt-table tr:not(:last-child) td { border-bottom: 1px solid rgba(42,58,80,0.5); }
+.pt-input { background: transparent; border: none; border-bottom: 1px solid var(–border); color: var(–cream); font-family: ‘Barlow’, sans-serif; font-size: 0.9rem; padding: 3px 0; width: 100%; outline: none; }
+.pt-input:focus { border-color: var(–gold); }
+.add-row-btn { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(–gray); background: none; border: 1px dashed var(–border); border-radius: 4px; padding: 6px 14px; cursor: pointer; margin-top: 8px; transition: all 0.15s; }
+.add-row-btn:hover { border-color: var(–gold); color: var(–gold); }
+.remove-btn { background: none; border: none; color: var(–gray); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 4px; transition: color 0.15s; }
+.remove-btn:hover { color: var(–red); }
+.divider { border: none; border-top: 1px solid var(–border); margin: 2px 0; }
+
+/* Export Modal */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; align-items: flex-end; justify-content: center; padding: 0; }
+.modal-overlay.open { display: flex; }
+@media(min-width:600px){ .modal-overlay { align-items: center; padding: 20px; } }
+.modal { background: var(–navy2); border: 1px solid var(–border); border-radius: 12px 12px 0 0; width: 100%; max-width: 500px; overflow: hidden; }
+@media(min-width:600px){ .modal { border-radius: 10px; } }
+.modal-header { background: var(–border); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; }
+.modal-title { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(–gold); }
+.modal-close { background: none; border: none; color: var(–gray); cursor: pointer; font-size: 1.3rem; padding: 0 4px; }
+.modal-body { padding: 16px; }
+.export-hint { font-size: 0.82rem; color: var(–gray); margin-bottom: 10px; line-height: 1.5; }
+#exportText { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(–border); border-radius: 5px; color: var(–cream); font-family: ‘Barlow’, monospace; font-size: 0.8rem; padding: 12px; height: 260px; resize: none; outline: none; line-height: 1.5; }
+.modal-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+
+.toast { position: fixed; bottom: 24px; right: 16px; background: var(–gold); color: var(–navy); font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; padding: 10px 18px; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; z-index: 300; }
+.toast.show { opacity: 1; transform: translateY(0); }
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="logo-icon">⚾</div>
+  <h1>11U <span>Weekly</span> Report</h1>
+  <div class="header-meta">
+    <span class="save-status" id="saveStatus">Loading...</span>
+    <button class="btn btn-outline" onclick="clearForm()">New Week</button>
+    <button class="btn btn-primary" onclick="saveForm()">Save</button>
+    <button class="btn btn-gold" onclick="openExport()">Export / Share</button>
+  </div>
+</header>
+
+<main>
+  <div class="meta-row">
+    <div><label>Team Name</label><input type="text" id="team" placeholder="e.g. Cardinals 11U"></div>
+    <div><label>Week Ending Date</label><input type="date" id="date"></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">📅</span><span class="section-title">Activities — Past Week</span></div>
+    <div class="section-body">
+      <div class="stats-grid">
+        <div><label>Tourney Games</label><input type="number" id="tourneyGames" min="0" placeholder="0"></div>
+        <div><label>League Games</label><input type="number" id="leagueGames" min="0" placeholder="0"></div>
+        <div><label>Total Games</label><input type="number" id="totalGames" min="0" placeholder="0"></div>
+        <div><label>Practices</label><input type="number" id="practices" min="0" placeholder="0"></div>
+      </div>
+      <div><label>Win–Loss Record</label><input type="text" id="record" placeholder="e.g. 4–2 (12–5 overall)"></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">💪</span><span class="section-title">Baseball Update</span></div>
+    <div class="section-body">
+      <div>
+        <label>Strongest Areas</label>
+        <div class="numbered-inputs">
+          <div class="numbered-row"><span class="num-badge">1</span><input type="text" class="strength-input" placeholder="e.g. Pitching command"></div>
+          <div class="numbered-row"><span class="num-badge">2</span><input type="text" class="strength-input" placeholder="e.g. Baserunning awareness"></div>
+          <div class="numbered-row"><span class="num-badge">3</span><input type="text" class="strength-input" placeholder="e.g. Defensive communication"></div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div>
+        <label>Areas That Need More Work</label>
+        <div class="numbered-inputs">
+          <div class="numbered-row"><span class="num-badge work-badge">1</span><input type="text" class="improvement-input" placeholder="e.g. Two-strike approach"></div>
+          <div class="numbered-row"><span class="num-badge work-badge">2</span><input type="text" class="improvement-input" placeholder="e.g. Fielding ground balls"></div>
+          <div class="numbered-row"><span class="num-badge work-badge">3</span><input type="text" class="improvement-input" placeholder="e.g. Bunt coverage"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">🎯</span><span class="section-title">Culture & Style of Play</span></div>
+    <div class="section-body">
+      <div><label>Style of Play Comments</label><textarea id="styleComments" placeholder="How did the team play together this week? Effort, approach, compete level..."></textarea></div>
+      <div><label>Specific Parent / Player Issues</label><textarea id="parentIssues" placeholder="Any concerns to address..."></textarea></div>
+      <div><label>#1 Area for Improvement</label><input type="text" id="topImprovement" placeholder="The single most important focus going forward"></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">⭐</span><span class="section-title">Gamers of the Week</span></div>
+    <div class="section-body">
+      <div class="gamer-list">
+        <div class="gamer-row-wrap">
+          <span class="gamer-cat-label">🔥 Effort</span>
+          <input type="text" id="gamerEffort" placeholder="Player name">
+        </div>
+        <div class="gamer-row-wrap">
+          <span class="gamer-cat-label">📖 Learning</span>
+          <input type="text" id="gamerLearning" placeholder="Player name">
+        </div>
+        <div class="gamer-row-wrap">
+          <span class="gamer-cat-label">📈 Improvement</span>
+          <input type="text" id="gamerImprovement" placeholder="Player name">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">⏱</span><span class="section-title">Playing Time — Players Under 67%</span></div>
+    <div class="section-body">
+      <table class="pt-table">
+        <thead><tr><th>Player</th><th>% Played</th><th>Reason / Notes</th><th></th></tr></thead>
+        <tbody id="ptTableBody"></tbody>
+      </table>
+      <button class="add-row-btn" onclick="addPTRow()">+ Add Player</button>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-icon">📋</span><span class="section-title">Program / Team Administration</span></div>
+    <div class="section-body">
+      <div><label>Administrative Issues</label><textarea id="adminIssues" placeholder="Scheduling, uniforms, equipment, fees, communications..."></textarea></div>
+      <div><label>Areas for Improvement</label><textarea id="adminImprovements" placeholder="Operational improvements for next week..."></textarea></div>
+    </div>
+  </div>
+</main>
+
+<!-- Export Modal -->
+
+<div class="modal-overlay" id="exportModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">📤 Export Report</span>
+      <button class="modal-close" onclick="closeExport()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="export-hint">Tap <strong>Copy All</strong>, then paste into an email, iMessage, or Notes app.</p>
+      <textarea id="exportText" readonly></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closeExport()">Close</button>
+        <button class="btn btn-gold" onclick="shareReport()">Share</button>
+        <button class="btn btn-primary" onclick="copyExport()">Copy All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const STORAGE_KEY = 'wr_11u_v1';
+  const today = new Date().toISOString().split('T')[0];
+
+  // Auto-calc total
+  ['tourneyGames','leagueGames'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      const t = parseInt(document.getElementById('tourneyGames').value)||0;
+      const l = parseInt(document.getElementById('leagueGames').value)||0;
+      document.getElementById('totalGames').value = (t+l)||'';
+    });
+  });
+
+  function v(id){ const el=document.getElementById(id); return el?el.value:''; }
+  function set(id,val){ const el=document.getElementById(id); if(el) el.value=val||''; }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+
+  function addPTRow(name='',pct='',notes=''){
+    const tbody=document.getElementById('ptTableBody');
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input class="pt-input" type="text" placeholder="Name" value="${esc(name)}"></td>
+      <td><input class="pt-input" type="text" placeholder="50%" value="${esc(pct)}"></td>
+      <td><input class="pt-input" type="text" placeholder="Notes" value="${esc(notes)}"></td>
+      <td><button class="remove-btn" onclick="removePTRow(this)">✕</button></td>`;
+    tbody.appendChild(tr);
+    rebindInputs();
+  }
+
+  function removePTRow(btn){
+    if(document.querySelectorAll('#ptTableBody tr').length>1){ btn.closest('tr').remove(); scheduleSave(); }
+  }
+
+  function collectData(){
+    const ptPlayers=[];
+    document.querySelectorAll('#ptTableBody tr').forEach(tr=>{
+      const ins=tr.querySelectorAll('input');
+      ptPlayers.push({name:ins[0].value,pct:ins[1].value,notes:ins[2].value});
+    });
+    return {
+      team:v('team'),date:v('date'),
+      tourneyGames:v('tourneyGames'),leagueGames:v('leagueGames'),totalGames:v('totalGames'),
+      practices:v('practices'),record:v('record'),
+      strengths:[...document.querySelectorAll('.strength-input')].map(i=>i.value),
+      improvements:[...document.querySelectorAll('.improvement-input')].map(i=>i.value),
+      styleComments:v('styleComments'),parentIssues:v('parentIssues'),topImprovement:v('topImprovement'),
+      gamerEffort:v('gamerEffort'),gamerLearning:v('gamerLearning'),gamerImprovement:v('gamerImprovement'),
+      ptPlayers,adminIssues:v('adminIssues'),adminImprovements:v('adminImprovements')
+    };
+  }
+
+  function restoreData(d){
+    set('team',d.team); set('date',d.date||today);
+    set('tourneyGames',d.tourneyGames); set('leagueGames',d.leagueGames);
+    set('totalGames',d.totalGames); set('practices',d.practices); set('record',d.record);
+    [...document.querySelectorAll('.strength-input')].forEach((el,i)=>el.value=(d.strengths||[])[i]||'');
+    [...document.querySelectorAll('.improvement-input')].forEach((el,i)=>el.value=(d.improvements||[])[i]||'');
+    set('styleComments',d.styleComments); set('parentIssues',d.parentIssues);
+    set('topImprovement',d.topImprovement);
+    set('gamerEffort',d.gamerEffort); set('gamerLearning',d.gamerLearning); set('gamerImprovement',d.gamerImprovement);
+    document.getElementById('ptTableBody').innerHTML='';
+    (d.ptPlayers&&d.ptPlayers.length?d.ptPlayers:[{}]).forEach(p=>addPTRow(p.name,p.pct,p.notes));
+    set('adminIssues',d.adminIssues); set('adminImprovements',d.adminImprovements);
+    rebindInputs();
+  }
+
+  // --- Storage: try window.storage, fallback to sessionStorage ---
+  async function saveForm(){
+    const json=JSON.stringify(collectData());
+    let ok=false;
+    if(window.storage){
+      try{ await window.storage.set(STORAGE_KEY,json); ok=true; }catch(e){}
+    }
+    if(!ok){ try{ sessionStorage.setItem(STORAGE_KEY,json); ok=true; }catch(e){} }
+    setStatus(ok?'Saved ✓':'Save failed',ok);
+    showToast(ok?'✓ Saved!':'Could not save');
+  }
+
+  async function loadSaved(){
+    let data=null;
+    if(window.storage){
+      try{ const r=await window.storage.get(STORAGE_KEY); if(r&&r.value) data=JSON.parse(r.value); }catch(e){}
+    }
+    if(!data){ try{ const s=sessionStorage.getItem(STORAGE_KEY); if(s) data=JSON.parse(s); }catch(e){} }
+    if(data){ restoreData(data); setStatus('Loaded ✓',true); }
+    else{ restoreData({}); document.getElementById('date').value=today; setStatus('No saved data',false); }
+  }
+
+  function clearForm(){
+    if(!confirm('Start a new week? Save first if you need to keep current data.')) return;
+    restoreData({}); document.getElementById('date').value=today; setStatus('New week',false);
+  }
+
+  function setStatus(msg,ok){
+    const el=document.getElementById('saveStatus');
+    el.textContent=msg; el.className='save-status'+(ok?' saved':'');
+  }
+
+  let saveTimer;
+  function scheduleSave(){ setStatus('Unsaved…',false); clearTimeout(saveTimer); saveTimer=setTimeout(saveForm,2000); }
+
+  function rebindInputs(){
+    document.querySelectorAll('input,textarea').forEach(el=>{
+      el.removeEventListener('input',scheduleSave);
+      el.addEventListener('input',scheduleSave);
+    });
+  }
+
+  function buildText(){
+    const d=collectData();
+    const L=[];
+    L.push('================================================');
+    L.push('        TEAM WEEKLY UPDATE');
+    L.push('================================================');
+    L.push(`Team:  ${d.team}`);
+    L.push(`Date:  ${d.date}`);
+    L.push('');
+    L.push('ACTIVITIES — PAST WEEK');
+    L.push('--------------------------------');
+    L.push(`Tourney Games:  ${d.tourneyGames||'—'}`);
+    L.push(`League Games:   ${d.leagueGames||'—'}`);
+    L.push(`Total Games:    ${d.totalGames||'—'}`);
+    L.push(`Practices:      ${d.practices||'—'}`);
+    L.push(`Win-Loss:       ${d.record||'—'}`);
+    L.push('');
+    L.push('BASEBALL UPDATE');
+    L.push('--------------------------------');
+    L.push('Strongest Areas:');
+    (d.strengths||[]).forEach((s,i)=>{ if(s) L.push(`  ${i+1}. ${s}`); });
+    L.push('Areas Needing More Work:');
+    (d.improvements||[]).forEach((s,i)=>{ if(s) L.push(`  ${i+1}. ${s}`); });
+    L.push('');
+    L.push('CULTURE & STYLE OF PLAY');
+    L.push('--------------------------------');
+    if(d.styleComments) L.push(d.styleComments);
+    if(d.parentIssues){ L.push(''); L.push('Parent/Player Issues:'); L.push(d.parentIssues); }
+    L.push(`\n#1 Area for Improvement: ${d.topImprovement||'—'}`);
+    L.push('');
+    L.push('GAMERS OF THE WEEK');
+    L.push('--------------------------------');
+    L.push(`  Effort:      ${d.gamerEffort||'—'}`);
+    L.push(`  Learning:    ${d.gamerLearning||'—'}`);
+    L.push(`  Improvement: ${d.gamerImprovement||'—'}`);
+    L.push('');
+    L.push('PLAYING TIME — UNDER 67%');
+    L.push('--------------------------------');
+    (d.ptPlayers||[]).forEach(p=>{ if(p.name) L.push(`  ${p.name} — ${p.pct||'?'}  ${p.notes||''}`); });
+    L.push('');
+    L.push('PROGRAM / TEAM ADMINISTRATION');
+    L.push('--------------------------------');
+    if(d.adminIssues) L.push(d.adminIssues);
+    if(d.adminImprovements){ L.push(''); L.push('Improvements:'); L.push(d.adminImprovements); }
+    L.push('');
+    L.push('================================================');
+    return L.join('\n');
+  }
+
+  function openExport(){
+    document.getElementById('exportText').value=buildText();
+    document.getElementById('exportModal').classList.add('open');
+  }
+  function closeExport(){ document.getElementById('exportModal').classList.remove('open'); }
+
+  async function copyExport(){
+    const text=document.getElementById('exportText').value;
+    try{ await navigator.clipboard.writeText(text); showToast('✓ Copied!'); }
+    catch(e){
+      const ta=document.getElementById('exportText');
+      ta.focus(); ta.select();
+      try{ document.execCommand('copy'); showToast('✓ Copied!'); }
+      catch(e2){ showToast('Select all text above and copy manually'); }
+    }
+  }
+
+  async function shareReport(){
+    const text=buildText();
+    const d=collectData();
+    const title=`Weekly Report — ${d.team||'11U'} — ${d.date||today}`;
+    if(navigator.share){
+      try{ await navigator.share({ title, text }); return; }catch(e){}
+    }
+    // fallback: open in mail
+    const mailto=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}`;
+    window.location.href=mailto;
+  }
+
+  function showToast(msg){
+    const t=document.getElementById('toast');
+    t.textContent=msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2500);
+  }
+
+  // Init
+  loadSaved();
+</script>
+
+</body>
+</html>
