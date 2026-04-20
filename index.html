@@ -4,93 +4,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weekly Team Report</title>
+<title>11U Weekly Team Report</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0d1b2a; --navy2: #162032; --red: #d0312d; --red2: #b02525;
-    --gold: #e8b84b; --cream: #f5f0e8; --gray: #8a9ab0; --border: #2a3a50;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--cream); min-height: 100vh; }
+  :root { --navy:#0d1b2a; --navy2:#162032; --red:#d0312d; --red2:#b02525; --gold:#e8b84b; --cream:#f5f0e8; --gray:#8a9ab0; --border:#2a3a50; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Barlow',sans-serif; background:var(--navy); color:var(--cream); min-height:100vh; }
 
-header { background: var(–navy2); border-bottom: 3px solid var(–red); padding: 14px 20px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.4); flex-wrap: wrap; }
-.logo-icon { width: 40px; height: 40px; background: var(–red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-header h1 { font-family: ‘Barlow Condensed’, sans-serif; font-size: 1.35rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
-header h1 span { color: var(–gold); }
-.header-meta { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.save-status { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; color: var(–gray); }
-.save-status.saved { color: #6bcb77; }
+/* HEADER */
+header { background:var(–navy2); border-bottom:3px solid var(–red); padding:10px 16px; display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto; gap:6px 12px; align-items:center; position:sticky; top:0; z-index:100; box-shadow:0 4px 20px rgba(0,0,0,0.4); }
+.logo-icon { width:36px; height:36px; background:var(–red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; grid-row:1/3; }
+header h1 { font-family:‘Barlow Condensed’,sans-serif; font-size:1.2rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; color:#fff; grid-column:2; grid-row:1; }
+header h1 span { color:var(–gold); }
+.header-meta { grid-column:2; grid-row:2; display:flex; gap:6px; align-items:center; flex-wrap:nowrap; }
+.save-status { font-family:‘Barlow Condensed’,sans-serif; font-size:0.72rem; color:var(–gray); white-space:nowrap; }
+.save-status.saved { color:#6bcb77; }
 
-.btn { font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 14px; border-radius: 4px; border: none; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-.btn-primary { background: var(–red); color: #fff; }
-.btn-primary:hover { background: var(–red2); }
-.btn-outline { background: transparent; border: 2px solid var(–border); color: var(–gray); }
-.btn-outline:hover { border-color: var(–gold); color: var(–gold); }
-.btn-gold { background: var(–gold); color: var(–navy); }
-.btn-gold:hover { background: #d4a63e; }
+/* BUTTONS */
+.btn { font-family:‘Barlow Condensed’,sans-serif; font-weight:700; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; padding:7px 12px; border-radius:4px; border:none; cursor:pointer; transition:all 0.15s; white-space:nowrap; }
+.btn-primary { background:var(–red); color:#fff; }
+.btn-primary:hover { background:var(–red2); }
+.btn-outline { background:transparent; border:2px solid var(–border); color:var(–gray); }
+.btn-outline:hover { border-color:var(–gold); color:var(–gold); }
+.btn-gold { background:var(–gold); color:var(–navy); }
+.btn-gold:hover { background:#d4a63e; }
+.btn-green { background:#2ecc71; color:#fff; }
+.btn-green:hover { background:#27ae60; }
 
-main { max-width: 860px; margin: 28px auto; padding: 0 16px 80px; }
-
-.meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+/* MAIN */
+main { max-width:860px; margin:28px auto; padding:0 16px 80px; }
+.meta-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
 @media(max-width:520px){ .meta-row { grid-template-columns:1fr; } }
 
-.section-card { background: var(–navy2); border: 1px solid var(–border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
-.section-header { background: var(–border); padding: 9px 18px; display: flex; align-items: center; gap: 10px; }
-.section-icon { font-size: 1rem; width: 22px; text-align: center; }
-.section-title { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(–gold); }
-.section-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.section-card { background:var(–navy2); border:1px solid var(–border); border-radius:8px; margin-bottom:16px; overflow:hidden; }
+.section-header { background:var(–border); padding:9px 18px; display:flex; align-items:center; gap:10px; }
+.section-icon { font-size:1rem; width:22px; text-align:center; }
+.section-title { font-family:‘Barlow Condensed’,sans-serif; font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(–gold); }
+.section-body { padding:18px; display:flex; flex-direction:column; gap:14px; }
 
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
-@media(max-width:520px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+@media(max-width:520px){ .stats-grid { grid-template-columns:repeat(2,1fr); } }
 
-label { display: block; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.76rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gray); margin-bottom: 5px; }
+label { display:block; font-family:‘Barlow Condensed’,sans-serif; font-size:0.76rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(–gray); margin-bottom:5px; }
 input[type=“text”], input[type=“date”], input[type=“number”], textarea {
-width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(–border); border-radius: 5px;
-color: var(–cream); font-family: ‘Barlow’, sans-serif; font-size: 0.95rem; padding: 9px 12px;
-transition: border-color 0.15s; outline: none; -webkit-appearance: none;
+width:100%; background:#1e2e42 !important; border:1px solid var(–border); border-radius:5px;
+color:var(–cream) !important; font-family:‘Barlow’,sans-serif; font-size:0.95rem; padding:9px 12px;
+transition:border-color 0.15s; outline:none; -webkit-appearance:none;
+-webkit-text-fill-color:var(–cream) !important;
 }
-input:focus, textarea:focus { border-color: var(–gold); background: rgba(232,184,75,0.05); }
-textarea { resize: vertical; min-height: 78px; }
+input:focus, textarea:focus { border-color:var(–gold); background:#1e3040 !important; }
+textarea { resize:vertical; min-height:78px; }
+input:-webkit-autofill, input:-webkit-autofill:focus { -webkit-box-shadow:0 0 0 1000px #1e2e42 inset !important; -webkit-text-fill-color:var(–cream) !important; }
 
-.numbered-inputs { display: flex; flex-direction: column; gap: 8px; }
-.numbered-row { display: flex; align-items: center; gap: 10px; }
-.num-badge { width: 26px; height: 26px; background: var(–red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
-.work-badge { background: var(–border); color: var(–gray); }
+.numbered-inputs { display:flex; flex-direction:column; gap:8px; }
+.numbered-row { display:flex; align-items:center; gap:10px; }
+.num-badge { width:26px; height:26px; background:var(–red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:‘Barlow Condensed’,sans-serif; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+.work-badge { background:var(–border); color:var(–gray); }
 
-.gamer-list { display: flex; flex-direction: column; gap: 10px; }
-.gamer-row-wrap { display: flex; align-items: center; gap: 12px; }
-.gamer-row-wrap input { flex: 1; }
-.gamer-cat-label { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gold); width: 100px; flex-shrink: 0; }
+.gamer-list { display:flex; flex-direction:column; gap:10px; }
+.gamer-row-wrap { display:flex; align-items:center; gap:12px; }
+.gamer-row-wrap input { flex:1; min-width:0; }
+.gamer-cat-label { font-family:‘Barlow Condensed’,sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(–gold); width:110px; flex-shrink:0; white-space:nowrap; }
 
-.pt-table { width: 100%; border-collapse: collapse; }
-.pt-table th { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(–gray); text-align: left; padding: 6px 10px; border-bottom: 1px solid var(–border); }
-.pt-table td { padding: 6px 8px; }
-.pt-table tr:not(:last-child) td { border-bottom: 1px solid rgba(42,58,80,0.5); }
-.pt-input { background: transparent; border: none; border-bottom: 1px solid var(–border); color: var(–cream); font-family: ‘Barlow’, sans-serif; font-size: 0.9rem; padding: 3px 0; width: 100%; outline: none; }
-.pt-input:focus { border-color: var(–gold); }
-.add-row-btn { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(–gray); background: none; border: 1px dashed var(–border); border-radius: 4px; padding: 6px 14px; cursor: pointer; margin-top: 8px; transition: all 0.15s; }
-.add-row-btn:hover { border-color: var(–gold); color: var(–gold); }
-.remove-btn { background: none; border: none; color: var(–gray); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 4px; transition: color 0.15s; }
-.remove-btn:hover { color: var(–red); }
-.divider { border: none; border-top: 1px solid var(–border); margin: 2px 0; }
+.pt-table { width:100%; border-collapse:collapse; }
+.pt-table th { font-family:‘Barlow Condensed’,sans-serif; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.08em; color:var(–gray); text-align:left; padding:6px 10px; border-bottom:1px solid var(–border); }
+.pt-table td { padding:6px 8px; }
+.pt-table tr:not(:last-child) td { border-bottom:1px solid rgba(42,58,80,0.5); }
+.pt-input { background:transparent; border:none; border-bottom:1px solid var(–border); color:var(–cream) !important; -webkit-text-fill-color:var(–cream) !important; font-family:‘Barlow’,sans-serif; font-size:0.9rem; padding:3px 0; width:100%; outline:none; -webkit-appearance:none; }
+.pt-input:focus { border-color:var(–gold); }
+.add-row-btn { font-family:‘Barlow Condensed’,sans-serif; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(–gray); background:none; border:1px dashed var(–border); border-radius:4px; padding:6px 14px; cursor:pointer; margin-top:8px; transition:all 0.15s; }
+.add-row-btn:hover { border-color:var(–gold); color:var(–gold); }
+.remove-btn { background:none; border:none; color:var(–gray); cursor:pointer; font-size:1rem; line-height:1; padding:0 4px; transition:color 0.15s; }
+.remove-btn:hover { color:var(–red); }
+.divider { border:none; border-top:1px solid var(–border); margin:2px 0; }
 
-/* Export Modal */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; align-items: flex-end; justify-content: center; padding: 0; }
-.modal-overlay.open { display: flex; }
-@media(min-width:600px){ .modal-overlay { align-items: center; padding: 20px; } }
-.modal { background: var(–navy2); border: 1px solid var(–border); border-radius: 12px 12px 0 0; width: 100%; max-width: 500px; overflow: hidden; }
-@media(min-width:600px){ .modal { border-radius: 10px; } }
-.modal-header { background: var(–border); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; }
-.modal-title { font-family: ‘Barlow Condensed’, sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(–gold); }
-.modal-close { background: none; border: none; color: var(–gray); cursor: pointer; font-size: 1.3rem; padding: 0 4px; }
-.modal-body { padding: 16px; }
-.export-hint { font-size: 0.82rem; color: var(–gray); margin-bottom: 10px; line-height: 1.5; }
-#exportText { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(–border); border-radius: 5px; color: var(–cream); font-family: ‘Barlow’, monospace; font-size: 0.8rem; padding: 12px; height: 260px; resize: none; outline: none; line-height: 1.5; }
-.modal-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+/* EXPORT MODAL */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:200; align-items:flex-end; justify-content:center; padding:0; }
+.modal-overlay.open { display:flex; }
+@media(min-width:600px){ .modal-overlay { align-items:center; padding:20px; } }
+.modal { background:var(–navy2); border:1px solid var(–border); border-radius:12px 12px 0 0; width:100%; max-width:500px; overflow:hidden; }
+@media(min-width:600px){ .modal { border-radius:10px; } }
+.modal-header { background:var(–border); padding:12px 18px; display:flex; align-items:center; justify-content:space-between; }
+.modal-title { font-family:‘Barlow Condensed’,sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(–gold); }
+.modal-close { background:none; border:none; color:var(–gray); cursor:pointer; font-size:1.3rem; padding:0 4px; }
+.modal-body { padding:16px; }
+.export-hint { font-size:0.82rem; color:var(–gray); margin-bottom:10px; line-height:1.5; }
+#exportText { width:100%; background:rgba(0,0,0,0.3); border:1px solid var(–border); border-radius:5px; color:var(–cream); font-family:monospace; font-size:0.78rem; padding:12px; height:240px; resize:none; outline:none; line-height:1.5; }
+.modal-actions { display:flex; gap:8px; margin-top:12px; justify-content:flex-end; }
 
-.toast { position: fixed; bottom: 24px; right: 16px; background: var(–gold); color: var(–navy); font-family: ‘Barlow Condensed’, sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; padding: 10px 18px; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; z-index: 300; }
-.toast.show { opacity: 1; transform: translateY(0); }
+/* PRINT PREVIEW */
+#previewModal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:300; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+#previewModal.open { display:block; }
+.preview-toolbar { position:sticky; top:0; background:#111; padding:10px 16px; display:flex; gap:8px; align-items:center; border-bottom:2px solid #333; z-index:10; }
+.preview-toolbar-hint { font-family:‘Barlow Condensed’,sans-serif; font-size:0.76rem; color:#888; margin-right:auto; }
+
+/* THE PRINTABLE PAGE */
+#printPage { background:#fff; color:#111; max-width:700px; margin:20px auto 40px; padding:28px 30px 36px; font-family:‘Barlow’,sans-serif; font-size:10.5pt; line-height:1.5; }
+.rpt-header { text-align:center; padding-bottom:10px; margin-bottom:16px; border-bottom:3px solid #c0392b; }
+.rpt-title { font-family:‘Barlow Condensed’,sans-serif; font-size:20pt; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; color:#c0392b; }
+.rpt-meta { font-size:9.5pt; color:#555; margin-top:3px; }
+.rpt-section { margin-bottom:14px; }
+.rpt-section-title { font-family:‘Barlow Condensed’,sans-serif; font-size:9pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; background:#1a2a3a; color:#fff; padding:3px 8px; margin-bottom:8px; }
+.rpt-label { font-family:‘Barlow Condensed’,sans-serif; font-size:7.5pt; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; display:block; margin-bottom:1px; }
+.rpt-value { border-bottom:1px solid #bbb; min-height:20px; padding:1px 2px; font-size:10pt; color:#111; word-break:break-word; }
+.rpt-value.tall { border:1px solid #bbb; min-height:50px; padding:4px 6px; }
+.rpt-row { display:flex; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+.rpt-field { flex:1; min-width:100px; }
+.rpt-field.full { flex:100%; }
+.rpt-numbered { list-style:none; margin:0; padding:0; }
+.rpt-numbered li { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
+.rpt-num { font-family:‘Barlow Condensed’,sans-serif; font-weight:700; font-size:9pt; color:#c0392b; width:12px; flex-shrink:0; }
+.rpt-num.work { color:#888; }
+.rpt-nline { border-bottom:1px solid #bbb; flex:1; min-height:18px; font-size:10pt; padding:1px 0; }
+.rpt-two-col { display:grid; grid-template-columns:1fr 1fr; gap:0 20px; }
+.rpt-gamer-row { display:flex; align-items:baseline; gap:10px; margin-bottom:5px; }
+.rpt-gamer-cat { font-family:‘Barlow Condensed’,sans-serif; font-size:8.5pt; font-weight:700; text-transform:uppercase; color:#555; width:85px; flex-shrink:0; }
+.rpt-gamer-line { border-bottom:1px solid #bbb; flex:1; min-height:18px; font-size:10pt; padding:1px 0; }
+.rpt-pt-table { width:100%; border-collapse:collapse; font-size:9.5pt; }
+.rpt-pt-table th { font-family:‘Barlow Condensed’,sans-serif; font-size:8pt; text-transform:uppercase; letter-spacing:0.06em; color:#888; border-bottom:1px solid #bbb; padding:3px 6px; text-align:left; }
+.rpt-pt-table td { border-bottom:1px solid #e5e5e5; padding:4px 6px; }
+
+.toast { position:fixed; bottom:24px; right:16px; background:var(–gold); color:var(–navy); font-family:‘Barlow Condensed’,sans-serif; font-weight:700; font-size:0.88rem; letter-spacing:0.05em; padding:10px 18px; border-radius:6px; box-shadow:0 4px 16px rgba(0,0,0,0.4); opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:500; }
+.toast.show { opacity:1; transform:translateY(0); }
+
+@media print {
+body > *:not(#previewModal) { display:none !important; }
+#previewModal { display:block !important; position:static; background:none; overflow:visible; }
+.preview-toolbar { display:none !important; }
+#printPage { margin:0; padding:16px; box-shadow:none; max-width:100%; }
+}
 </style>
 
 </head>
@@ -101,9 +143,10 @@ textarea { resize: vertical; min-height: 78px; }
   <h1>11U <span>Weekly</span> Report</h1>
   <div class="header-meta">
     <span class="save-status" id="saveStatus">Loading...</span>
-    <button class="btn btn-outline" onclick="clearForm()">New Week</button>
+    <button class="btn btn-outline" onclick="clearForm()">New</button>
     <button class="btn btn-primary" onclick="saveForm()">Save</button>
-    <button class="btn btn-gold" onclick="openExport()">Export / Share</button>
+    <button class="btn btn-green" onclick="openPreview()">Preview</button>
+    <button class="btn btn-gold" onclick="openExport()">Share</button>
   </div>
 </header>
 
@@ -152,7 +195,7 @@ textarea { resize: vertical; min-height: 78px; }
   <div class="section-card">
     <div class="section-header"><span class="section-icon">🎯</span><span class="section-title">Culture & Style of Play</span></div>
     <div class="section-body">
-      <div><label>Style of Play Comments</label><textarea id="styleComments" placeholder="How did the team play together this week? Effort, approach, compete level..."></textarea></div>
+      <div><label>Style of Play Comments</label><textarea id="styleComments" placeholder="How did the team play together this week?"></textarea></div>
       <div><label>Specific Parent / Player Issues</label><textarea id="parentIssues" placeholder="Any concerns to address..."></textarea></div>
       <div><label>#1 Area for Improvement</label><input type="text" id="topImprovement" placeholder="The single most important focus going forward"></div>
     </div>
@@ -162,18 +205,9 @@ textarea { resize: vertical; min-height: 78px; }
     <div class="section-header"><span class="section-icon">⭐</span><span class="section-title">Gamers of the Week</span></div>
     <div class="section-body">
       <div class="gamer-list">
-        <div class="gamer-row-wrap">
-          <span class="gamer-cat-label">🔥 Effort</span>
-          <input type="text" id="gamerEffort" placeholder="Player name">
-        </div>
-        <div class="gamer-row-wrap">
-          <span class="gamer-cat-label">📖 Learning</span>
-          <input type="text" id="gamerLearning" placeholder="Player name">
-        </div>
-        <div class="gamer-row-wrap">
-          <span class="gamer-cat-label">📈 Improvement</span>
-          <input type="text" id="gamerImprovement" placeholder="Player name">
-        </div>
+        <div class="gamer-row-wrap"><span class="gamer-cat-label">🔥 Effort</span><input type="text" id="gamerEffort" placeholder="Player name"></div>
+        <div class="gamer-row-wrap"><span class="gamer-cat-label">📖 Learning</span><input type="text" id="gamerLearning" placeholder="Player name"></div>
+        <div class="gamer-row-wrap"><span class="gamer-cat-label">📈 Improvement</span><input type="text" id="gamerImprovement" placeholder="Player name"></div>
       </div>
     </div>
   </div>
@@ -198,16 +232,27 @@ textarea { resize: vertical; min-height: 78px; }
   </div>
 </main>
 
-<!-- Export Modal -->
+<!-- PRINT PREVIEW MODAL -->
+
+<div id="previewModal">
+  <div class="preview-toolbar">
+    <span class="preview-toolbar-hint">Tap Share → Save to Files / Print to PDF</span>
+    <button class="btn btn-outline" onclick="closePreview()" style="border-color:#555;color:#aaa;">✕ Close</button>
+    <button class="btn btn-gold" onclick="window.print()">🖨 Print / PDF</button>
+  </div>
+  <div id="printPage"><!-- filled by JS --></div>
+</div>
+
+<!-- EXPORT TEXT MODAL -->
 
 <div class="modal-overlay" id="exportModal">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-title">📤 Export Report</span>
+      <span class="modal-title">📤 Share Report</span>
       <button class="modal-close" onclick="closeExport()">✕</button>
     </div>
     <div class="modal-body">
-      <p class="export-hint">Tap <strong>Copy All</strong>, then paste into an email, iMessage, or Notes app.</p>
+      <p class="export-hint">Tap <strong>Share</strong> to send via iMessage, email, or Notes. Or <strong>Copy All</strong> to paste anywhere.</p>
       <textarea id="exportText" readonly></textarea>
       <div class="modal-actions">
         <button class="btn btn-outline" onclick="closeExport()">Close</button>
@@ -224,18 +269,17 @@ textarea { resize: vertical; min-height: 78px; }
   const STORAGE_KEY = 'wr_11u_v1';
   const today = new Date().toISOString().split('T')[0];
 
-  // Auto-calc total
   ['tourneyGames','leagueGames'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => {
-      const t = parseInt(document.getElementById('tourneyGames').value)||0;
-      const l = parseInt(document.getElementById('leagueGames').value)||0;
-      document.getElementById('totalGames').value = (t+l)||'';
+      const t=parseInt(document.getElementById('tourneyGames').value)||0;
+      const l=parseInt(document.getElementById('leagueGames').value)||0;
+      document.getElementById('totalGames').value=(t+l)||'';
     });
   });
 
-  function v(id){ const el=document.getElementById(id); return el?el.value:''; }
+  function v(id){ const el=document.getElementById(id); return el?el.value.trim():''; }
   function set(id,val){ const el=document.getElementById(id); if(el) el.value=val||''; }
-  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
   function addPTRow(name='',pct='',notes=''){
     const tbody=document.getElementById('ptTableBody');
@@ -277,8 +321,7 @@ textarea { resize: vertical; min-height: 78px; }
     set('totalGames',d.totalGames); set('practices',d.practices); set('record',d.record);
     [...document.querySelectorAll('.strength-input')].forEach((el,i)=>el.value=(d.strengths||[])[i]||'');
     [...document.querySelectorAll('.improvement-input')].forEach((el,i)=>el.value=(d.improvements||[])[i]||'');
-    set('styleComments',d.styleComments); set('parentIssues',d.parentIssues);
-    set('topImprovement',d.topImprovement);
+    set('styleComments',d.styleComments); set('parentIssues',d.parentIssues); set('topImprovement',d.topImprovement);
     set('gamerEffort',d.gamerEffort); set('gamerLearning',d.gamerLearning); set('gamerImprovement',d.gamerImprovement);
     document.getElementById('ptTableBody').innerHTML='';
     (d.ptPlayers&&d.ptPlayers.length?d.ptPlayers:[{}]).forEach(p=>addPTRow(p.name,p.pct,p.notes));
@@ -286,133 +329,166 @@ textarea { resize: vertical; min-height: 78px; }
     rebindInputs();
   }
 
-  // --- Storage: try window.storage, fallback to sessionStorage ---
   async function saveForm(){
-    const json=JSON.stringify(collectData());
-    let ok=false;
-    if(window.storage){
-      try{ await window.storage.set(STORAGE_KEY,json); ok=true; }catch(e){}
-    }
+    const json=JSON.stringify(collectData()); let ok=false;
+    if(window.storage){ try{ await window.storage.set(STORAGE_KEY,json); ok=true; }catch(e){} }
     if(!ok){ try{ sessionStorage.setItem(STORAGE_KEY,json); ok=true; }catch(e){} }
+    if(!ok){ try{ localStorage.setItem(STORAGE_KEY,json); ok=true; }catch(e){} }
     setStatus(ok?'Saved ✓':'Save failed',ok);
     showToast(ok?'✓ Saved!':'Could not save');
   }
 
   async function loadSaved(){
     let data=null;
-    if(window.storage){
-      try{ const r=await window.storage.get(STORAGE_KEY); if(r&&r.value) data=JSON.parse(r.value); }catch(e){}
-    }
-    if(!data){ try{ const s=sessionStorage.getItem(STORAGE_KEY); if(s) data=JSON.parse(s); }catch(e){} }
+    if(window.storage){ try{ const r=await window.storage.get(STORAGE_KEY); if(r&&r.value) data=JSON.parse(r.value); }catch(e){} }
+    if(!data){ try{ const s=sessionStorage.getItem(STORAGE_KEY)||localStorage.getItem(STORAGE_KEY); if(s) data=JSON.parse(s); }catch(e){} }
     if(data){ restoreData(data); setStatus('Loaded ✓',true); }
-    else{ restoreData({}); document.getElementById('date').value=today; setStatus('No saved data',false); }
+    else{ restoreData({}); document.getElementById('date').value=today; setStatus('Ready',false); }
   }
 
   function clearForm(){
-    if(!confirm('Start a new week? Save first if you need to keep current data.')) return;
+    if(!confirm('Start a new week? Save first if needed.')) return;
     restoreData({}); document.getElementById('date').value=today; setStatus('New week',false);
   }
 
-  function setStatus(msg,ok){
-    const el=document.getElementById('saveStatus');
-    el.textContent=msg; el.className='save-status'+(ok?' saved':'');
-  }
-
+  function setStatus(msg,ok){ const el=document.getElementById('saveStatus'); el.textContent=msg; el.className='save-status'+(ok?' saved':''); }
   let saveTimer;
   function scheduleSave(){ setStatus('Unsaved…',false); clearTimeout(saveTimer); saveTimer=setTimeout(saveForm,2000); }
+  function rebindInputs(){ document.querySelectorAll('input,textarea').forEach(el=>{ el.removeEventListener('input',scheduleSave); el.addEventListener('input',scheduleSave); }); }
 
-  function rebindInputs(){
-    document.querySelectorAll('input,textarea').forEach(el=>{
-      el.removeEventListener('input',scheduleSave);
-      el.addEventListener('input',scheduleSave);
-    });
+  /* ── PRINT PREVIEW ── */
+  function val(s){ return esc(s||''); }
+
+  function buildPrintPage(){
+    const d=collectData();
+    const strengths=(d.strengths||[]).map((s,i)=>`<li><span class="rpt-num">${i+1}</span><span class="rpt-nline">${val(s)}</span></li>`).join('');
+    const improvements=(d.improvements||[]).map((s,i)=>`<li><span class="rpt-num work">${i+1}</span><span class="rpt-nline">${val(s)}</span></li>`).join('');
+    const ptRows=(d.ptPlayers||[]).filter(p=>p.name).map(p=>`<tr><td>${val(p.name)}</td><td>${val(p.pct)}</td><td>${val(p.notes)}</td></tr>`).join('') || '<tr><td colspan="3" style="color:#aaa;font-style:italic">None</td></tr>';
+
+    return `
+      <div class="rpt-header">
+        <div class="rpt-title">Team Weekly Update</div>
+        <div class="rpt-meta"><strong>Team:</strong> ${val(d.team)} &nbsp;|&nbsp; <strong>Date:</strong> ${val(d.date)}</div>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Activities for Past Week</div>
+        <div class="rpt-row">
+          <div class="rpt-field"><span class="rpt-label">Tourney Games</span><div class="rpt-value">${val(d.tourneyGames)}</div></div>
+          <div class="rpt-field"><span class="rpt-label">League Games</span><div class="rpt-value">${val(d.leagueGames)}</div></div>
+          <div class="rpt-field"><span class="rpt-label">Total # Games</span><div class="rpt-value">${val(d.totalGames)}</div></div>
+          <div class="rpt-field"><span class="rpt-label"># Practices</span><div class="rpt-value">${val(d.practices)}</div></div>
+        </div>
+        <div class="rpt-row">
+          <div class="rpt-field full"><span class="rpt-label">Win-Loss Record</span><div class="rpt-value">${val(d.record)}</div></div>
+        </div>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Baseball Update</div>
+        <div class="rpt-two-col">
+          <div>
+            <span class="rpt-label">Strongest Areas</span>
+            <ul class="rpt-numbered">${strengths}</ul>
+          </div>
+          <div>
+            <span class="rpt-label">Areas That Need More Work</span>
+            <ul class="rpt-numbered">${improvements}</ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Culture &amp; Style of Play</div>
+        <div class="rpt-row"><div class="rpt-field full"><span class="rpt-label">Style of Play Comments</span><div class="rpt-value tall">${val(d.styleComments)}</div></div></div>
+        <div class="rpt-row"><div class="rpt-field full"><span class="rpt-label">Specific Parent / Player Issues</span><div class="rpt-value tall">${val(d.parentIssues)}</div></div></div>
+        <div class="rpt-row"><div class="rpt-field full"><span class="rpt-label">Number 1 Area for Improvement</span><div class="rpt-value">${val(d.topImprovement)}</div></div></div>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Gamers of the Week — Effort · Learning · Improvement</div>
+        <div class="rpt-gamer-row"><span class="rpt-gamer-cat">Effort</span><div class="rpt-gamer-line">${val(d.gamerEffort)}</div></div>
+        <div class="rpt-gamer-row"><span class="rpt-gamer-cat">Learning</span><div class="rpt-gamer-line">${val(d.gamerLearning)}</div></div>
+        <div class="rpt-gamer-row"><span class="rpt-gamer-cat">Improvement</span><div class="rpt-gamer-line">${val(d.gamerImprovement)}</div></div>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Playing Time Issues — Players Who Played &lt; 67%</div>
+        <table class="rpt-pt-table">
+          <thead><tr><th>Player</th><th>% Played</th><th>Notes</th></tr></thead>
+          <tbody>${ptRows}</tbody>
+        </table>
+      </div>
+
+      <div class="rpt-section">
+        <div class="rpt-section-title">Program / Team Administration</div>
+        <div class="rpt-row"><div class="rpt-field full"><span class="rpt-label">Issues</span><div class="rpt-value tall">${val(d.adminIssues)}</div></div></div>
+        <div class="rpt-row"><div class="rpt-field full"><span class="rpt-label">Areas for Improvement</span><div class="rpt-value tall">${val(d.adminImprovements)}</div></div></div>
+      </div>
+    `;
   }
 
+  function openPreview(){
+    document.getElementById('printPage').innerHTML=buildPrintPage();
+    document.getElementById('previewModal').classList.add('open');
+    document.getElementById('previewModal').scrollTop=0;
+  }
+  function closePreview(){ document.getElementById('previewModal').classList.remove('open'); }
+
+  /* ── TEXT EXPORT / SHARE ── */
   function buildText(){
-    const d=collectData();
-    const L=[];
+    const d=collectData(); const L=[];
     L.push('================================================');
     L.push('        TEAM WEEKLY UPDATE');
     L.push('================================================');
-    L.push(`Team:  ${d.team}`);
-    L.push(`Date:  ${d.date}`);
-    L.push('');
-    L.push('ACTIVITIES — PAST WEEK');
-    L.push('--------------------------------');
+    L.push(`Team:  ${d.team}`);    L.push(`Date:  ${d.date}`);    L.push('');
+    L.push('ACTIVITIES — PAST WEEK');    L.push('--------------------------------');
     L.push(`Tourney Games:  ${d.tourneyGames||'—'}`);
     L.push(`League Games:   ${d.leagueGames||'—'}`);
     L.push(`Total Games:    ${d.totalGames||'—'}`);
     L.push(`Practices:      ${d.practices||'—'}`);
-    L.push(`Win-Loss:       ${d.record||'—'}`);
-    L.push('');
-    L.push('BASEBALL UPDATE');
-    L.push('--------------------------------');
+    L.push(`Win-Loss:       ${d.record||'—'}`);    L.push('');
+    L.push('BASEBALL UPDATE');    L.push('--------------------------------');
     L.push('Strongest Areas:');
     (d.strengths||[]).forEach((s,i)=>{ if(s) L.push(`  ${i+1}. ${s}`); });
     L.push('Areas Needing More Work:');
-    (d.improvements||[]).forEach((s,i)=>{ if(s) L.push(`  ${i+1}. ${s}`); });
-    L.push('');
-    L.push('CULTURE & STYLE OF PLAY');
-    L.push('--------------------------------');
+    (d.improvements||[]).forEach((s,i)=>{ if(s) L.push(`  ${i+1}. ${s}`); });    L.push('');
+    L.push('CULTURE & STYLE OF PLAY');    L.push('--------------------------------');
     if(d.styleComments) L.push(d.styleComments);
     if(d.parentIssues){ L.push(''); L.push('Parent/Player Issues:'); L.push(d.parentIssues); }
-    L.push(`\n#1 Area for Improvement: ${d.topImprovement||'—'}`);
-    L.push('');
-    L.push('GAMERS OF THE WEEK');
-    L.push('--------------------------------');
+    L.push(`\n#1 Area for Improvement: ${d.topImprovement||'—'}`);    L.push('');
+    L.push('GAMERS OF THE WEEK');    L.push('--------------------------------');
     L.push(`  Effort:      ${d.gamerEffort||'—'}`);
     L.push(`  Learning:    ${d.gamerLearning||'—'}`);
-    L.push(`  Improvement: ${d.gamerImprovement||'—'}`);
-    L.push('');
-    L.push('PLAYING TIME — UNDER 67%');
-    L.push('--------------------------------');
-    (d.ptPlayers||[]).forEach(p=>{ if(p.name) L.push(`  ${p.name} — ${p.pct||'?'}  ${p.notes||''}`); });
-    L.push('');
-    L.push('PROGRAM / TEAM ADMINISTRATION');
-    L.push('--------------------------------');
+    L.push(`  Improvement: ${d.gamerImprovement||'—'}`);    L.push('');
+    L.push('PLAYING TIME — UNDER 67%');    L.push('--------------------------------');
+    (d.ptPlayers||[]).forEach(p=>{ if(p.name) L.push(`  ${p.name} — ${p.pct||'?'}  ${p.notes||''}`); });    L.push('');
+    L.push('PROGRAM / TEAM ADMINISTRATION');    L.push('--------------------------------');
     if(d.adminIssues) L.push(d.adminIssues);
     if(d.adminImprovements){ L.push(''); L.push('Improvements:'); L.push(d.adminImprovements); }
-    L.push('');
-    L.push('================================================');
+    L.push(''); L.push('================================================');
     return L.join('\n');
   }
 
-  function openExport(){
-    document.getElementById('exportText').value=buildText();
-    document.getElementById('exportModal').classList.add('open');
-  }
+  function openExport(){ document.getElementById('exportText').value=buildText(); document.getElementById('exportModal').classList.add('open'); }
   function closeExport(){ document.getElementById('exportModal').classList.remove('open'); }
 
   async function copyExport(){
     const text=document.getElementById('exportText').value;
     try{ await navigator.clipboard.writeText(text); showToast('✓ Copied!'); }
-    catch(e){
-      const ta=document.getElementById('exportText');
-      ta.focus(); ta.select();
-      try{ document.execCommand('copy'); showToast('✓ Copied!'); }
-      catch(e2){ showToast('Select all text above and copy manually'); }
-    }
+    catch(e){ const ta=document.getElementById('exportText'); ta.focus(); ta.select(); try{ document.execCommand('copy'); showToast('✓ Copied!'); }catch(e2){ showToast('Tap &amp; hold → Select All → Copy'); } }
   }
 
   async function shareReport(){
-    const text=buildText();
-    const d=collectData();
+    const text=buildText(); const d=collectData();
     const title=`Weekly Report — ${d.team||'11U'} — ${d.date||today}`;
-    if(navigator.share){
-      try{ await navigator.share({ title, text }); return; }catch(e){}
-    }
-    // fallback: open in mail
-    const mailto=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}`;
-    window.location.href=mailto;
+    if(navigator.share){ try{ await navigator.share({title,text}); return; }catch(e){} }
+    window.location.href=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}`;
   }
 
-  function showToast(msg){
-    const t=document.getElementById('toast');
-    t.textContent=msg; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2500);
-  }
+  function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
 
-  // Init
+  rebindInputs();
   loadSaved();
 </script>
 
